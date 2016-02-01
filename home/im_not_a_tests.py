@@ -11,7 +11,7 @@ class SimpleTest(unittest.TestCase):
 
     def test_details(self):
         # Issue a GET request.
-        testings_app_reversed = ['polls:index', 'blog:home','blog:about', 'taskbuster:index']
+        testings_app_reversed = ['polls:index', 'blog:home','blog:about', 'taskbuster:index', 'newsletter:home']
         '''#just hardcodding some url, rewrite it latter
         testings_app_NOT_reversed = ['/blog/', '/', '/blog/articles/1', '/polls/1/' ]
         for i in testings_app_NOT_reversed:

@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls', 'blog', 'home', 'taskbuster',
+    'polls', 'blog', 'home', 'taskbuster', 'newsletter',
 ]
 
 #was added 'django.middleware.locale.LocaleMiddleware' for taskbuster internationalize

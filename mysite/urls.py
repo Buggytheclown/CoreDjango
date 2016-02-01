@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls', namespace="blog")),
     url(r'^$', home.views.homepage),
     url(r'^taskbuster/', include('taskbuster.urls', namespace="taskbuster")),
+    url(r'^newsletter/', include('newsletter.urls', namespace="newsletter")),
 ]
