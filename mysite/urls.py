@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 
 import home.views
@@ -22,6 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^blog/', include('blog.urls', namespace="blog")),
-    url(r'^taskbuster/', include('taskbuster.urls', namespace="taskbuster")),
     url(r'^$', home.views.homepage),
+    url(r'^taskbuster/', include('taskbuster.urls', namespace="taskbuster")),
 ]
