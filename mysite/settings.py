@@ -27,6 +27,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# settings for email:
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'buggy.the.clown.md@gmail.com'
+EMAIL_HOST_PASSWORD = 'buggy2497672'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 # Application definition
 
 INSTALLED_APPS = [
