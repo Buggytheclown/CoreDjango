@@ -38,12 +38,16 @@ EMAIL_USE_TLS = True
 # Application definition
 
 INSTALLED_APPS = [
+    # Django app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # second app
+    'crispy_forms',
+    # my app
     'polls', 'blog', 'home', 'taskbuster', 'newsletter',
 ]
 
@@ -138,3 +142,5 @@ LANGUAGES = (
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'taskbuster', 'locale'),
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

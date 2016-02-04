@@ -5,6 +5,8 @@ from django.core.mail import send_mail
 # Create your views here.
 from .forms import SignUpForm, ContactForm
 
+def base (request):
+    return render (request, 'newsletter/base.html')
 
 def home(request):
     title = 'Welcom, pls authenticate'

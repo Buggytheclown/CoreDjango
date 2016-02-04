@@ -1,16 +1,30 @@
+{% extends 'newsletter/base.html' %}
+{% load crispy_forms_tags %}
+
+
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Newsletter's home</title>
 </head>
 <body>
-<h2> {{ template_title }}</h2>
 
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Sign Up">
-</form>
+{% block content %}
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <h2> {{ template_title }}</h2>
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-primary" type="submit" value="Sign Up">
+
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
+
 </body>
 </html>
