@@ -1,18 +1,40 @@
 {% extends 'newsletter/base.html' %}
 {% load crispy_forms_tags %}
 
+{% block title %}
+    try Django 1.8
+{% endblock %}
 
-<!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
-    <meta charset="UTF-8">
-    <title>Newsletter's home</title>
-</head>
-<body>
+<style>
+    {% block style  %}
+
+    {% endblock %}
+</style>
+
+
+{% block jumbotron %}
+    <div class="jumbotron">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Try Django 1.8</h1>
+                <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
+                    It
+                    includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+                <p>To see the difference between static and fixed top navbars, just scroll.</p>
+                <p>
+                    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Join us &raquo;</a>
+                </p>
+            </div>
+            <div class="col-sm-6" style='background-color: black; height: 300px'>  {# placeholder for video #}
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 {% block content %}
     <div class="row">
-        <div class="col-md-3 col-sm-6">
+        <div class="col-xs-3 pull-right">
             <h2> {{ template_title }}</h2>
 
             <form method="POST" action="">
@@ -25,6 +47,3 @@
     </div>
 
 {% endblock content %}
-
-</body>
-</html>

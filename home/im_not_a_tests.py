@@ -20,6 +20,7 @@ class SimpleTest(unittest.TestCase):
             print ('!! NOT reversed __', i, '__ --- was passed')'''
 
         for i in testings_app_reversed:
+            print ('trying reversed __', i)
             response = self.client.get(reverse(i))
             self.assertEqual(response.status_code, 200)
             print ('!! reversed __', i, '__ --- was passed')

@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-</form>
-</body>
-</html>
+{% extends 'newsletter/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            {% if title %}
+                <h1 class="text-center">{{ title }}</h1> {# title - from render context ('Contact Us') #}
+            {% endif %}
+
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

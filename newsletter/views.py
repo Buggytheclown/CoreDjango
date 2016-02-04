@@ -5,8 +5,11 @@ from django.core.mail import send_mail
 # Create your views here.
 from .forms import SignUpForm, ContactForm
 
+def about (request):
+    return render (request, 'newsletter/about.html', {})
+
 def base (request):
-    return render (request, 'newsletter/base.html')
+    return render (request, 'newsletter/base.html', {})
 
 def home(request):
     title = 'Welcom, pls authenticate'
@@ -35,6 +38,7 @@ def home(request):
 
 
 def contact(request):
+    title = 'Contact Us'
     form = ContactForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         form_email = form.cleaned_data.get('email')
@@ -66,5 +70,6 @@ def contact(request):
                   fail_silently=False)
     context = {
         'form': form,
+        'title':title,
     }
     return render(request, 'newsletter/forms.html', context)

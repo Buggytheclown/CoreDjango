@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^blog/', include('blog.urls', namespace="blog")),
-    url(r'^$', home.views.homepage),
+    url(r'^$', home.views.homepage, name='base_home'),
     url(r'^taskbuster/', include('taskbuster.urls', namespace="taskbuster")),
     url(r'^newsletter/', include('newsletter.urls', namespace="newsletter")),
 ]
