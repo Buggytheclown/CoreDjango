@@ -1,39 +1,134 @@
-{% load staticfiles %}
+{% extends 'home/base.html' %}
+{% load static %}
+{#<ul>Меню сайта:#}
+{#    <li><a href="/admin">Админка</a></li>#}
+{#    <li><a href="{% url 'polls:index' %}">Голосовалка</a></li>#}
+{#    <li><a href="{% url 'blog:home' %}">Блог</a></li>#}
+{#    <li><a href="{% url 'taskbuster:index' %}">Taskbuster (empty)</a></li>#}
+{#    <li><a href="{% url 'newsletter:home' %}">Newsletter</a></li>#}
 
-<link rel="stylesheet" type="text/css" href="{% static 'home/site_style.css' %}"/>
+{% block title %}
+    Tidjei's project
+{% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Site</title>
-</head>
-<body>
-<div id="header">Im a header</div>
-<div id="body">
-    <div id="navbar" style="margin-right: 20px">
-        <ul>Меню сайта:
-            <li><a href="/admin">Админка</a></li>
-            <li><a href="{% url 'polls:index'  %}">Голосовалка</a></li>
-            <li><a href="{% url 'blog:home' %}">Блог</a></li>
-            <li><a href="{% url 'taskbuster:index' %}">Taskbuster (empty)</a></li>
-            <li><a href="{% url 'newsletter:home' %}">Newsletter</a></li>
-        </ul>
+
+{% block jumbotron %}
+    <h1>Welcom to Tidjei's project home page</h1>
+     <div class="row">
+        <div class="col-sm-8">
+    <p style="text-indent: 20px">This site was created with <a href="http://getbootstrap.com/">Bootstrap</a>, Django 1.9.1, Python 3.5.0 and <a
+            href="https://www.jetbrains.com/pycharm/">PyCharm</a>. Also used couple of third party modules.
+        Follow me on <a href="https://github.com/Buggytheclown">GitHub</a>(Check the READMY inside).</p>
+        <p style="text-indent: 20px"> In the menu below you can find some of my web page, that was created by me in purples of learning Django.
+        Right now the menu's web pages is isolated. </p>
+             <p style="text-indent: 20px">Im a Junior. Still learning to do all staff better.</p>
+        </div>
+        {#Carousel#}
+
+        <div class="col-sm-4 ">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="{% static 'home/img/bob1.gif' %}" alt="...">
+                        <div class="carousel-caption">
+                            1st
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{% static 'home/img/bob2.gif' %}" alt="...">
+                        <div class="carousel-caption">
+                            2nd
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="{% static 'home/img/bob3.gif' %}" alt="...">
+                        <div class="carousel-caption">
+                            3rd
+                        </div>
+                    </div>
+                    ...
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+{#                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>#}
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+{#                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>#}
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
     </div>
-    <div id="content"> <h2 style="text-align: center">Главная тема</h2>
-        <p style="padding: 10px; text-indent: 20px;}">HTML изначально задумывался как язык, которому не нужны средства оформления, такие как цвет, размер, рамки или что-то подобное. Разработанный в Европейском институте физики частиц (CERN), HTML был игрушкой ученых, их, прежде всего, интересовала логика информации, а не её визуальное представление. Тогда ещё не существовало понятия веб-дизайна и вёрстки как таковой, все сайты по своему оформлению были практически однотипными, в стиле, называемом сейчас «академический дизайн». Пример до сих пор можно посмотреть на lib.ru.
-Однако пользователи преимущественно думали иначе и, глядя на красивую картинку, отдавали предпочтение именно ей. Разработчики браузера Netscape прекрасно понимали это и вводили в HTML новые теги, улучшающие внешний вид документа. Эти теги не были стандартизированы и работали только в Netscape, что в эпоху повального засилья этого браузера, не имело значения. Доля Netscape составляла более 90% от всех существующих браузеров.
-Влияние Netscape оказалось губительным для академического дизайна, фактически похоронив его и оказалось благотворным для становления веб-дизайна. Разработчики сайтов поняли, что дизайн это не просто разноцветный текст и вставленные наобум картинки. Это возможность красочно и эффектно подать материал, придать определённое настроение сайту, заинтересовать посетителя и задержать его на ресурсе. Дизайн стал непосредственным этапом разработки сайта, за которым последовала и вёрстка. Нарисованные в Фотошопе макеты следовало превратить из одной картинки в набор изображений, стилевых и HTML-файлов, способных быстро загружаться по сети, сохраняя при этом особенности дизайна.
-Век Netscape  продолжался до тех пор, пока часть рынка браузеров не захватила Microsoft со своим браузером Internet Explorer, что в итоге принесло только головную боль разработчикам сайтов. Разные подходы Netscape и Internet Explorer к отображению сайта, противоречивая поддержка стилей и тегов, большое количество мелких ошибок привело к тому, что сайт приходилось тестировать и отлаживать долгое время.
-Устаревшие версии браузеров не в полной мере поддерживали CSS (Cascading Style Sheets, каскадные таблицы стилей), поэтому код представлял собой окрошку из HTML и CSS. Это привело к тому, что для макетов стали применяться таблицы с невидимой границей, на долгое время ставшими стандартом де-факто.
-Следующим этапом развития разработки сайтов стало рождение спецификации, которая была названа Cascading Style Sheets Level 2, сокращенно CSS2. Следом появилось обновление Cascading Style Sheets Level 2 Revision 1 (CSS 2.1), которое используется по сей день. Выпуск новых версий браузеров, поддерживающих, пусть и не в полной мере, эту спецификацию, серьёзно облегчил работу над сайтами. В итоге, начал происходить постепенный переход от табличной вёрстки к блочной или, как она ещё называется, вёрстке слоями, в которой расположение элементов на странице и их вид задаётся через стили.
-В настоящее время уже можно заявить, что табличная вёрстка в большинстве своём является архаизмом. Тем не менее, существует ещё множество сайтов вроде yandex.ru, artlebedev.ru и других, свёрстанных именно при содействии таблиц. Такой консерватизм связан со следующими обстоятельствами.
-Вёрстка слоями сложнее, чем таблицами, поскольку требует от разработчика глубоких знаний спецификации CSS.
-Браузеры содержат разные ошибки при интерпретации стилевых свойств, поэтому следует знать особенности поведения основных браузеров, их ошибки и уметь обходить их.
-Практически каждую задачу можно решить несколькими способами, от разработчика требуется выбрать оптимальный, т.е. наименее затратный по времени и усилиям. Для оценки оптимальности необходим практический опыт, чтобы иметь в запасе разные методы, применяемые в конкретных ситуациях.
-Таким образом, вёрстка в простом понимании это процесс превращения работы дизайнера в веб-страницу, отображаемую в браузере. Но один и тот же результат можно получить разными методами и уже от верстальщика зависит, какой из них предпочесть. От такого выбора зависит результат работы сайта, быстрота его отображения, доступность для разных устройств и браузеров.
-Помните, что вёрстка это практическая дисциплина и только самостоятельно решая разные задачи и работая над проектами, вы сможете освоить это искусство.</p></div>
-</div>
-<div id="footer">im footer</div>
-</body>
-</html>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+{#App meinu#}
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <h2>Web app menu:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Admin</h2>
+            <p>Admin's page, for staff only.<br>
+                (Django default)</p>
+            <p><a class="btn btn-primary" href="/admin" role="button">View details &raquo;</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Voting page</h2>
+            <p>There we have some question for you.<br>
+                (Django <a href="https://docs.djangoproject.com/en/1.9/intro/tutorial01/">default tutorial</a>)</p>
+            <p><a class="btn btn-primary" href="{% url 'polls:index' %}" role="button">View details &raquo;</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Simple blog page</h2>
+            <p>Blog with almost nothing. <br>
+                (Short <a href="https://www.youtube.com/watch?v=IZqBTPmxoew">webinar</a>)</p>
+            <p><a class="btn btn-primary" href="{% url 'blog:home' %}" role="button">View details &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Taskbuster</h2>
+            <p>Almost empty bootstrap page. <br>
+                (trying to do the <a href="http://www.marinamele.com/taskbuster-django-tutorial">Marina Mele
+                    tutorial</a>)</p>
+            <p><a class="btn btn-primary" href="{% url 'taskbuster:index' %}" role="button">View details &raquo;</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Newsletter</h2>
+            <p>MVP Landing Page. Registration, email submit.<br>
+                (<a href="https://www.codingforentrepreneurs.com/projects/try-django-18/">Django lecture series</a>)</p>
+            <p><a class="btn btn-primary" href="{% url 'newsletter:home' %}" role="button">View details &raquo;</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Reserved</h2>
+            <p>In progress<br>
+                (<a href="https://www.codingforentrepreneurs.com/projects/try-django-19/">try Django 1.9</a>)
+            </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+    </div>
+
+{% endblock %}

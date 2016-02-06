@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^$', home.views.homepage, name='base_home'),
     url(r'^taskbuster/', include('taskbuster.urls', namespace="taskbuster")),
     url(r'^newsletter/', include('newsletter.urls', namespace="newsletter")),
+    url(r'^newsletter/accounts/', include('registration.backends.default.urls')),
 ]

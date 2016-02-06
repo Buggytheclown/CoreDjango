@@ -11,38 +11,72 @@
     {% endblock %}
 </style>
 
-
 {% block jumbotron %}
-    <div class="jumbotron">
-
+    {% if queryset %}
         <div class="row">
-            <div class="col-sm-6">
-                <h1>Try Django 1.8</h1>
-                <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work.
-                    It
-                    includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-                <p>To see the difference between static and fixed top navbars, just scroll.</p>
-                <p>
-                    <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Join us &raquo;</a>
-                </p>
+            <div class="col-sm-6 col-sm-offset-3">
+                <h2>Spammed mail:</h2>
             </div>
-            <div class="col-sm-6" style='background-color: black; height: 300px'>  {# placeholder for video #}
+
+            {% for i in queryset %}
+                <div class="col-sm-6 col-sm-offset-3">
+                   {{ forloop.counter }}<strong> Name:</strong> {{ i.full_name }} <strong>mail:</strong> {{ i }}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+
+        <div class="jumbotron">
+
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <h1>Try Django 1.8</h1>
+                    <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar
+                        work.
+                        It
+                        includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+                    <p>To see the difference between static and fixed top navbars, just scroll.</p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" href="#" role="button">Join us &raquo;</a>
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">  {# placeholder for video #}
+                    <iframe width="540" height="315" src="https://www.youtube.com/embed/AgYxMVRtJr4" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 {% endblock %}
+
 
 {% block content %}
     <div class="row">
-        <div class="col-xs-3 pull-right">
-            <h2> {{ template_title }}</h2>
+        <div class="col-sm-3">
+            <p class="lead text-align-center">1st</p>
+        </div>
 
+        <div class="col-sm-3">
+            <p class="lead text-align-center">2end</p>
+        </div>
+
+        <div class="col-sm-3">
+            <p class="lead text-align-center">3rd</p>
+        </div>
+
+        {#    <div class="col-sm-3">#}
+        {#        <p class="lead text-align-center">4st</p>#}
+
+        <div class="col-xs-3 pull-right">
+            {#            <h2> {{ template_title }}</h2>#}
+            <h2> Signup for spam</h2>
+            {#            {% if not user.is_authenticated %}#}
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <input class="btn btn-primary" type="submit" value="Sign Up">
-
             </form>
+            {#            {% endif %}#}
         </div>
     </div>
 

@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',  # for django-registration-redux
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # second app
     'crispy_forms',
+    'registration', # for django-registration-redux
     # my app
-    'polls', 'blog', 'home', 'taskbuster', 'newsletter',
+    'polls', 'blog', 'home', 'taskbuster', 'newsletter', 'posts',
 ]
 
 #was added 'django.middleware.locale.LocaleMiddleware' for taskbuster internationalize
@@ -133,14 +135,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Internationalize SETTINGS (for taskbuster, innactive right now)
 LANGUAGES = (
     ('en', _('English')),
     ('ru', _('Russian')),
 )
 
-
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'taskbuster', 'locale'),
 )
 
+# Crispy forms tags SETTINGS:
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# django-registration-redux Settings:
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/newsletter'
