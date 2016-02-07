@@ -20,7 +20,7 @@
             href="https://www.jetbrains.com/pycharm/">PyCharm</a>. Also used couple of third party modules.
         Follow me on <a href="https://github.com/Buggytheclown">GitHub</a>(Check the READMY inside).</p>
         <p style="text-indent: 20px"> In the menu below you can find some of my web page, that was created by me in purples of learning Django.
-        Right now the menu's web pages is isolated. </p>
+        Right now the menu's web pages didn't integrated with the others. </p>
              <p style="text-indent: 20px">Im a Junior. Still learning to do all staff better.</p>
         </div>
         {#Carousel#}
@@ -55,7 +55,7 @@
                             3rd
                         </div>
                     </div>
-                    ...
+{#                    ...#}
                 </div>
 
                 <!-- Controls -->
@@ -88,21 +88,46 @@
             <h2>Admin</h2>
             <p>Admin's page, for staff only.<br>
                 (Django default)</p>
-            <p><a class="btn btn-primary" href="/admin" role="button">View details &raquo;</a></p>
+            {% if request.user.is_staff %}
+            <p><a class="btn btn-success" href="{% url 'admin:index' %}" role="button">View details &raquo;</a></p>
+{# modal button for staff user#}
+            {% else %}
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-example-modal-sm">
+                    View details &raquo;
+                </button>
+                <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+                     aria-labelledby="mySmallModalLabel">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">Access error</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>For staff users only. For access contact the Administrator.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
         </div>
 
         <div class="col-md-4">
             <h2>Voting page</h2>
             <p>There we have some question for you.<br>
                 (Django <a href="https://docs.djangoproject.com/en/1.9/intro/tutorial01/">default tutorial</a>)</p>
-            <p><a class="btn btn-primary" href="{% url 'polls:index' %}" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-success" href="{% url 'polls:index' %}" role="button">View details &raquo;</a></p>
         </div>
 
         <div class="col-md-4">
             <h2>Simple blog page</h2>
             <p>Blog with almost nothing. <br>
                 (Short <a href="https://www.youtube.com/watch?v=IZqBTPmxoew">webinar</a>)</p>
-            <p><a class="btn btn-primary" href="{% url 'blog:home' %}" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-success" href="{% url 'blog:home' %}" role="button">View details &raquo;</a></p>
         </div>
     </div>
 
@@ -112,14 +137,14 @@
             <p>Almost empty bootstrap page. <br>
                 (trying to do the <a href="http://www.marinamele.com/taskbuster-django-tutorial">Marina Mele
                     tutorial</a>)</p>
-            <p><a class="btn btn-primary" href="{% url 'taskbuster:index' %}" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="{% url 'taskbuster:index' %}" role="button">View details &raquo;</a></p>
         </div>
 
         <div class="col-md-4">
             <h2>Newsletter</h2>
             <p>MVP Landing Page. Registration, email submit.<br>
                 (<a href="https://www.codingforentrepreneurs.com/projects/try-django-18/">Django lecture series</a>)</p>
-            <p><a class="btn btn-primary" href="{% url 'newsletter:home' %}" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-success" href="{% url 'newsletter:home' %}" role="button">View details &raquo;</a></p>
         </div>
 
         <div class="col-md-4">
@@ -127,7 +152,7 @@
             <p>In progress<br>
                 (<a href="https://www.codingforentrepreneurs.com/projects/try-django-19/">try Django 1.9</a>)
             </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <p><a class="btn btn-default" href="{% url 'posts:home' %}" role="button">View details &raquo;</a></p>
         </div>
     </div>
 

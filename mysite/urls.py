@@ -20,11 +20,14 @@ from django.contrib import admin
 import home.views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls, name='admin'),
+    url(r'^admin/', admin.site.urls),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^blog/', include('blog.urls', namespace="blog")),
     url(r'^$', home.views.homepage, name='base_home'),
+    url(r'^about/$', home.views.about, name='about'),
+    url(r'^contact/$', home.views.contact, name='contact'),
     url(r'^taskbuster/', include('taskbuster.urls', namespace="taskbuster")),
     url(r'^newsletter/', include('newsletter.urls', namespace="newsletter")),
     url(r'^newsletter/accounts/', include('registration.backends.default.urls')),
+    url(r'^posts/', include('posts.urls', namespace="posts")),
 ]

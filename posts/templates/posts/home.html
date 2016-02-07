@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts|Home</title>
+</head>
+<body>
+{% for i in model_title %}
+    {{ forloop.counter }} {{ i.title }} {{ i.timestamp }}<br>
+{% endfor %}
+</body>
+</html>

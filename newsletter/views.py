@@ -46,7 +46,7 @@ def home(request):
 
 
 def contact(request):
-    title = 'Contact You (message will be send to email below)'
+    title = 'Contact Yourself (message will be send to email below)'
     form = ContactForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         form_email = form.cleaned_data.get('email')

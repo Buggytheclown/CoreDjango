@@ -30,12 +30,21 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+<style>
+    ul.dropdown-menu {
+    background-color: #bf5a16;
+}
+
+{#    li:hover {#}
+{#    background-color: #bf5a16;#}
+{#}#}
+</style>
 </head>
 
 <body>
 
-{#<nav class="navbar navbar-inverse navbar-fixed-top">#}
-{#    <div class="container">#}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
 {#        <div class="navbar-header">#}
 {#            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"#}
 {#                    aria-expanded="false" aria-controls="navbar">#}
@@ -44,8 +53,29 @@
 {#                <span class="icon-bar"></span>#}
 {#                <span class="icon-bar"></span>#}
 {#            </button>#}
-{#            <a class="navbar-brand" href="#">Project name</a>#}
+{#            <a class="navbar-brand" href="{% url 'base_home' %}">Home</a>#}
 {#        </div>#}
+{#         menu with dropdown#}
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li {% block home_active %}class="active"{% endblock %}><a href="{% url 'base_home' %}">Home</a></li>
+                <li{% block about_active %}{% endblock %}><a href="{% url 'about' %}">About</a></li>
+                <li{% block contact_active %}{% endblock %}><a href="{% url 'contact' %}">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Web app menu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'blog:home' %}">Voting page</a></li>
+                        <li><a href="{% url 'taskbuster:index' %}">Taskbuster</a></li>
+                        <li><a href="{% url 'newsletter:home' %}">Newsletter</a></li>
+{#                        <li role="separator" class="divider"></li>#}
+{#                        <li class="dropdown-header">Nav header</li>#}
+                        <li><a href="{% url 'posts:home' %}">Reserved</a></li>
+{#                        <li><a href="#">One more separated link</a></li>#}
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
 {#        <div id="navbar" class="navbar-collapse collapse">#}
 {#            <form class="navbar-form navbar-right">#}
 {#                <div class="form-group">#}
@@ -57,18 +87,13 @@
 {#                <button type="submit" class="btn btn-success">Sign in</button>#}
 {#            </form>#}
 {#        </div><!--/.navbar-collapse -->#}
-{#    </div>#}
-{#</nav>#}
+    </div>
+</nav>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
         {% block jumbotron %}
-            <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a
-                jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-                unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         {% endblock %}
     </div>
 </div>
@@ -76,29 +101,6 @@
 <div class="container">
     <!-- Example row of columns -->
     {% block content %}
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
-                euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
-                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
-                fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
-    </div>
     {% endblock %}
 
     <hr>
