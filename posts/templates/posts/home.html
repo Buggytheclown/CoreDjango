@@ -1,12 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Posts|Home</title>
-</head>
-<body>
-{% for i in model_title %}
-    {{ forloop.counter }} {{ i.title }} {{ i.timestamp }}<br>
-{% endfor %}
-</body>
-</html>
+{% extends 'posts/base.html' %}
+
+
+{% block head_title %}
+    {{ block.super }}|Home
+{% endblock %}
+
+{#{% block content %}#}
+{#{% for i in model_title %}#}
+{#   <h2><a href="{{ i.get_absolute_url }}">{{ i.title }}</a> <small>{{ i.updated|timesince }} ago</small></h2>#}
+{#    <p>{{ i.content|linebreaks|truncatechars:500 }}</p><br>#}
+{#{% endfor %}#}
+{#{% endblock %}#}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h1>Tidjei's blog</h1>
+            <form method="GET" action="">
+                <input type="text" placeholder="Search post" name="q" value="{{ request.GET.q }}"/>
+                <input type="submit" value="Search"/>
+            </form>
+            {% for i in model_title %}
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="thumbnail">
+                            <h3>{{ i.title }} <br>
+                                <small>{{ i.updated|timesince }} ago</small>
+                            </h3>
+                            {% if i.user.get_full_name %}
+                                <p>Author: {{ i.user.get_full_name }}</p>
+                            {% endif %}
+
+                            {% if i.image %}
+                                <img src="{{ i.image.url }}" class="img-responsive"/>
+                            {% endif %}
+
+                            <div class="caption">
+                                <p>{{ i.content|linebreaks|truncatechars:500 }}</p>
+                                <p><a href="{{ i.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+                                    {% if request.user.is_stuff or request.user.is_superuser %}
+                                        <a href="{% url 'posts:update' i.id %}" class="btn btn-info"
+                                           role="button">Edit</a>
+                                        <a href="{% url 'posts:delete' i.id %}" class="btn btn-warning" role="button">Delete</a>
+                                        </p>
+                                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+            <div class="pagination">
+    <span class="step-links">
+        {% if model_title.has_previous %}
+            <a href="?page={{ model_title.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}
+            {% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ model_title.number }} of {{ model_title.paginator.num_pages }}.
+        </span>
+
+        {% if model_title.has_next %}
+            <a href="?page={{ model_title.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}
+            {% endif %}">next</a>
+        {% endif %}
+    </span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
